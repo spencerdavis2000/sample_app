@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-include ApplicationHelper
 
 describe "UserPages" do
 

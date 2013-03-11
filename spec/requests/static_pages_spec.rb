@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-include ApplicationHelper
 
 describe "StaticPages" do
 	subject {page}
@@ -33,5 +32,21 @@ describe "StaticPages" do
 		it {should have_selector('h1', text: 'Contact Us')}
 		it {should have_selector('title', text: full_title('Contact Us'))}
 	end
-
+	describe "Check for working links" do
+		it "should have the right links on the layout" do
+			visit root_path
+			click_link "About"
+			should have_selector('title', text: full_title('About Us'))
+			click_link "Help"
+			should have_selector('title', text: full_title('Help'))
+			click_link "Contact"
+			should have_selector('title', text: full_title('Contact Us'))
+			click_link "Home"
+			should have_selector('title', text: full_title(''))
+			click_link "Sign up now!"
+			should have_selector('title', text: full_title('Sign Up'))
+			click_link "sample app"
+			should have_selector('title', text: full_title(''))
+		end
+	end
 end
